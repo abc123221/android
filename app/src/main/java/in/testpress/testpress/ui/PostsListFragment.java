@@ -127,12 +127,12 @@ public class PostsListFragment extends Fragment implements
         mTopLevelSpinnerAdapter.addHeader(getString(R.string.categories));Toolbar toolbar;
         if (getActivity() instanceof MainActivity) {
             toolbar = ((MainActivity) (getActivity())).getActionBarToolbar();
-//            mSpinnerContainer.setVisibility(View.GONE);
         } else {
             toolbar = ((PostsListActivity) (getActivity())).getActionBarToolbar();
         }
         mSpinnerContainer = getActivity().getLayoutInflater().inflate(R.layout.actionbar_spinner,
                 toolbar, false);
+        mSpinnerContainer.setVisibility(View.GONE);
 
         Spinner spinner = (Spinner) mSpinnerContainer.findViewById(R.id.actionbar_spinner);
         spinner.setAdapter(mTopLevelSpinnerAdapter);
@@ -160,7 +160,6 @@ public class PostsListFragment extends Fragment implements
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-        mSpinnerContainer.setVisibility(View.GONE);
     }
 
     @Override
@@ -253,13 +252,11 @@ public class PostsListFragment extends Fragment implements
 
                 if (!categories.isEmpty()) {
                     Ln.e("Setting visible");
-                    mSpinnerContainer.setVisibility(View.VISIBLE);
                     Toolbar toolbar;
                     if (getActivity() == null) {
                         return;
                     } else if (getActivity() instanceof MainActivity) {
                         toolbar = ((MainActivity) (getActivity())).getActionBarToolbar();
-                        mSpinnerContainer.setVisibility(View.GONE);
                     } else {
                         toolbar = ((PostsListActivity) (getActivity())).getActionBarToolbar();
                     }
@@ -675,10 +672,12 @@ public class PostsListFragment extends Fragment implements
         super.setUserVisibleHint(visible);
         Ln.e("setUserVisibleHunt");
         if (visible && getActivity() != null) {
+            if (mSpinnerContainer != null) {
+                mSpinnerContainer.setVisibility(View.VISIBLE);
+            }
             Toolbar toolbar;
             if (getActivity() instanceof MainActivity) {
                 toolbar = ((MainActivity) (getActivity())).getActionBarToolbar();
-                mSpinnerContainer.setVisibility(View.GONE);
             } else {
                 toolbar = ((PostsListActivity) (getActivity())).getActionBarToolbar();
             }
@@ -688,6 +687,10 @@ public class PostsListFragment extends Fragment implements
             ActionBar.LayoutParams lp = new ActionBar.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             toolbar.addView(mSpinnerContainer, lp);
+        } else {
+            if (mSpinnerContainer != null) {
+                mSpinnerContainer.setVisibility(View.GONE);
+            }
         }
     }
 }
