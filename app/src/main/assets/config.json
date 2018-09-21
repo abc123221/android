@@ -1,15 +1,15 @@
 {
   "version" : "1.0",
   "version_code" : 1,
-  "testpress_site_subdomain" : "sandbox",
-  "package_name" : "in.testpress.testpress",
-  "app_name" : "Testpress",
-  "share_message": "Good app to prepare for online exams.",
-  "primary_color": "3598db",
-  "allow_anonymous_user" : true,
+  "testpress_site_subdomain" : "mathiit",
+  "package_name" : "com.mathiitexam",
+  "app_name" : "MATHIIT",
+  "share_message": "Good app to prepare for IIT, NEET, GATE exams.",
+  "primary_color": "2A2C92",
+  "allow_anonymous_user" : false,
   "screenshot_disabled" : false,
-  "facebook_app_id" : "733962776688753",
-  "server_client_id" : "1064046661341-itk3upke5nqs5mrcrflbhi9dia3vl2se.apps.googleusercontent.com",
+  "facebook_app_id" : "321156081782049",
+  "server_client_id" : "462213293100-qp6t4ei46a9oias18ls1sov5bfimltbv.apps.googleusercontent.com",
   "display_username_on_video": true,
-  "white_labeled_host_url": null
+  "white_labeled_host_url": "www.mathiitexam.com"
 }
